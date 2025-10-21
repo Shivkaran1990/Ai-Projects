@@ -29,12 +29,15 @@ public class ChatServiceImpl implements ChatService {
 //                .call()
 //                .content();
 
-        Prompt prompt=new Prompt(query);
-        var response=chatClient.prompt(prompt)
-                .call()
-                .chatResponse()
-                        .getMetadata();
-               // .content();
+//        Prompt prompt=new Prompt(query);
+//        var response=chatClient.prompt(prompt)
+//                .call()
+//                .chatResponse()
+//                        .getMetadata();
+//               // .content();
+
+        var response =chatClient.prompt(query).call().content();
+        System.out.println(response);
 
         System.out.println(response);
 
