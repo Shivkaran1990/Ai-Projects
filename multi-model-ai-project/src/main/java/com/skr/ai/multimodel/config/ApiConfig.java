@@ -1,21 +1,23 @@
-package com.skr.ai.ollama.controller.config;
+package com.skr.ai.multimodel.config;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApiConfig {
 
-    @Bean
-    public ChatClient getOpenAiChatClient(Open)
+    @Bean(name="openAiChatClient")
+    public ChatClient getOpenAiChatClient(OpenAiChatModel openAiChatModel)
     {
-       return ChatClient.builder(new )
+       return ChatClient.builder(openAiChatModel).build();
     }
 
-    @Bean
-    public ChatClient getOllamaChatClient()
+    @Bean(name="ollamaChatClient")
+    public ChatClient getOllamaChatClient(OllamaChatModel ollamaChatModel)
     {
-
+     return ChatClient.builder(ollamaChatModel).build();
     }
 }
