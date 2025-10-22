@@ -3,7 +3,6 @@ package com.skr.ai.firstproject.service.impl;
 import com.skr.ai.firstproject.entity.Tutorial;
 import com.skr.ai.firstproject.service.ChatService;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +12,9 @@ import java.util.List;
 public class ChatServiceImpl implements ChatService {
 
     private ChatClient chatClient;
-    public ChatServiceImpl(ChatClient.Builder builder)
-    {
-        this.chatClient=builder.build();
+
+    public ChatServiceImpl(ChatClient.Builder builder) {
+        this.chatClient = builder.build();
     }
 
 
@@ -36,7 +35,7 @@ public class ChatServiceImpl implements ChatService {
 //                        .getMetadata();
 //               // .content();
 
-        var response =chatClient.prompt(query).call().content();
+        var response = chatClient.prompt(query).call().content();
         System.out.println(response);
 
         System.out.println(response);
@@ -46,7 +45,7 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public Tutorial getTutorial(String query) {
-        Tutorial tutorial=chatClient.prompt(query)
+        Tutorial tutorial = chatClient.prompt(query)
                 .call().entity(Tutorial.class);
         System.out.println(tutorial);
         return tutorial;
@@ -54,7 +53,7 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public List<Tutorial> getListTutorial(String query) {
-        List<Tutorial> tutorials=chatClient.prompt(query)
+        List<Tutorial> tutorials = chatClient.prompt(query)
                 .call().entity(new ParameterizedTypeReference<List<Tutorial>>() {
                 });
         System.out.println(tutorials);
