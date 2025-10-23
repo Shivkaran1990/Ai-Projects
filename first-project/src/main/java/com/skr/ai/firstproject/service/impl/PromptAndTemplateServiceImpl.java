@@ -61,7 +61,7 @@ public class PromptAndTemplateServiceImpl implements PromptAndTemplateService {
         var response = this.chatClient.prompt()
                 .system(systemMessage)
                 .user(user -> user.text(userResource)
-                        .param("concept", "Python iteration")
+                        .param("concept", s)
                 )
                 .call()
                 .content();
