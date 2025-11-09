@@ -1,4 +1,4 @@
-package com.skr.ai.firstproject.service.impl;
+package com.skr.ai.firstproject.service;
 
 public interface AdvisorsService {
     String resWithAdvisors(String query);
